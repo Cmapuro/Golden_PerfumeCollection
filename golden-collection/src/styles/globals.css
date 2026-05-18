@@ -1,0 +1,40 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html[lang='ar'] {
+  direction: rtl;
+}
+
+html[lang='en'] {
+  direction: ltr;
+}
+
+body {
+  font-family: 'Cormorant Garamond', serif;
+  background: var(--surface);
+  color: var(--text-main);
+}
+
+/* RTL Support for common spacing utilities */
+html[lang='ar'] [style*='padding-left'] {
+  padding-right: var(--padding-left) !important;
+  padding-left: 0 !important;
+}
+
+html[lang='ar'] [style*='padding-right'] {
+  padding-left: var(--padding-right) !important;
+  padding-right: 0 !important;
+}
+
+html[lang='ar'] [style*='margin-left'] {
+  margin-right: var(--margin-left) !important;
+  margin-left: 0 !important;
+}
+
+html[lang='ar'] [style*='margin-right'] {
+  margin-left: var(--margin-right) !important;
+  margin-right: 0 !important;
+}

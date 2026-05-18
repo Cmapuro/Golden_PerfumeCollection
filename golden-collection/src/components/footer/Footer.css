@@ -1,0 +1,111 @@
+/* Footer.css */
+
+.footer {
+  background-color: #111111; /* Deep, rich black */
+  color: #f0f0f0;
+  padding: 70px 20px 20px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 40px;
+}
+
+.footer-col {
+  flex: 1;
+  min-width: 250px;
+}
+
+/* Elegant serif font for the brand name */
+.footer-col h4 {
+  color: #d4af37; /* Metallic Gold */
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  margin-top: 0;
+  font-family: 'Playfair Display', 'Georgia', serif; 
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.footer-col h5 {
+  color: #ffffff;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  margin-top: 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.footer-col p {
+  line-height: 1.6;
+  color: #a0a0a0;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: 15px;
+}
+
+.footer-col a {
+  color: #a0a0a0;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.footer-col a:hover {
+  color: #d4af37; /* Changes to gold on hover */
+  padding-left: 5px; /* Slight indent effect */
+}
+
+.social-links {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.social-links a {
+  border: 1px solid #444;
+  padding: 10px 20px;
+  border-radius: 30px; /* Pill shape for elegance */
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.social-links a:hover {
+  border-color: #d4af37;
+  background-color: #d4af37;
+  color: #111111; /* Dark text on gold background */
+  padding-left: 20px; /* Reset the global link hover indent */
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 30px;
+  margin-top: 60px;
+  border-top: 1px solid #2a2a2a;
+  color: #777;
+  font-size: 0.9rem;
+}
+
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+  .footer {
+    padding: 50px 20px 20px;
+  }
+  
+  .footer-content {
+    flex-direction: column;
+    gap: 30px;
+  }
+}
