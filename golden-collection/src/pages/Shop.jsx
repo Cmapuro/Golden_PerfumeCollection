@@ -1,15 +1,18 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { LanguageContext } from '../context/LanguageContext';
+import { CartContext } from '../context/CartContext';
 import { t } from '../data/translations';
 
 export default function Shop() {
   const { language } = useContext(LanguageContext);
+  const { addToCart } = useContext(CartContext);
+  const [hoveredId, setHoveredId] = useState(null);
 
   const products = [
-    { name: 'Musk Al Qurashi', type: 'Body Musk · 75ml', price: 245 },
-    { name: 'Oud Royale', type: 'Eau de Parfum · 100ml', price: 680 },
-    { name: 'Safari Rose', type: 'Women EDP · 75ml', price: 395 },
-    { name: 'Khashab Al Oud', type: 'Pure Oil · 3ml', price: 890 },
+    { id: 1, name: 'Musk Al Qurashi', type: 'Body Musk · 75ml', price: 245 },
+    { id: 2, name: 'Oud Royale', type: 'Eau de Parfum · 100ml', price: 680 },
+    { id: 3, name: 'Safari Rose', type: 'Women EDP · 75ml', price: 395 },
+    { id: 4, name: 'Khashab Al Oud', type: 'Pure Oil · 3ml', price: 890 },
   ];
 
   return (
@@ -71,14 +74,20 @@ export default function Shop() {
               {t('sAR', language)} {product.price}
             </p>
             <button
+              onClick={() => addToCart(product)}
+              onMouseEnter={() => setHoveredId(product.id)}
+              onMouseLeave={() => setHoveredId(null)}
               style={{
-                background: '#c19941',
+                background: hoveredId === product.id ? '#a17a2f' : '#c19941',
                 color: '#fff',
                 border: 'none',
                 padding: '8px 16px',
                 borderRadius: '4px',
                 cursor: 'pointer',
                 width: '100%',
+                transition: 'background 0.3s ease',
+                transform:
+                  hoveredId === product.id ? 'scale(1.05)' : 'scale(1)',
               }}
             >
               {t('addToCart', language)}

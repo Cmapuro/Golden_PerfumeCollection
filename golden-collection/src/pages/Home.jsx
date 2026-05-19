@@ -1,15 +1,20 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { LanguageContext } from '../context/LanguageContext';
+import { CartContext } from '../context/CartContext';
 import { t } from '../data/translations';
 
 export default function Home() {
+  const navigate = useNavigate();
   const { language } = useContext(LanguageContext);
+  const { addToCart } = useContext(CartContext);
+  const [hoveredId, setHoveredId] = useState(null);
 
   const products = [
-    { name: 'Musk Al Qurashi', type: 'Body Musk · 75ml', price: 245 },
-    { name: 'Oud Royale', type: 'Eau de Parfum · 100ml', price: 680 },
-    { name: 'Safari Rose', type: 'Women EDP · 75ml', price: 395 },
-    { name: 'Khashab Al Oud', type: 'Pure Oil · 3ml', price: 890 },
+    { id: 1, name: 'Musk Al Qurashi', type: 'Body Musk · 75ml', price: 245 },
+    { id: 2, name: 'Oud Royale', type: 'Eau de Parfum · 100ml', price: 680 },
+    { id: 3, name: 'Safari Rose', type: 'Women EDP · 75ml', price: 395 },
+    { id: 4, name: 'Khashab Al Oud', type: 'Pure Oil · 3ml', price: 890 },
   ];
 
   return (
@@ -69,6 +74,7 @@ export default function Home() {
           {t('discoverCenturies', language)}
         </p>
         <button
+          onClick={() => navigate('/shop')}
           style={{
             background: '#c19941',
             color: '#fff',
@@ -175,10 +181,14 @@ export default function Home() {
                   {t('sAR', language)} {product.price}
                 </p>
                 <button
+                  onClick={() => addToCart(product)}
+                  onMouseEnter={() => setHoveredId(product.id)}
+                  onMouseLeave={() => setHoveredId(null)}
                   style={{
-                    background: 'transparent',
-                    color: '#333',
-                    border: '1px solid #e0e0e0',
+                    background:
+                      hoveredId === product.id ? '#c19941' : 'transparent',
+                    color: hoveredId === product.id ? '#fff' : '#333',
+                    border: `1px solid ${hoveredId === product.id ? '#c19941' : '#e0e0e0'}`,
                     padding: '12px 16px',
                     borderRadius: '2px',
                     width: '100%',
@@ -187,6 +197,7 @@ export default function Home() {
                     textTransform: 'uppercase',
                     letterSpacing: '1px',
                     cursor: 'pointer',
+                    transition: 'all 0.3s ease',
                   }}
                 >
                   {t('addToCart', language)}
